@@ -2,3 +2,12 @@
 Control your pc from web browser
 
 /!\ The project is not finished and is in development!
+
+#
+
+
+### Future update :
+ - Add login systeme
+ - Add keyboard input
+ - Add middle mouse button
+ - Add Clipboard sharing
