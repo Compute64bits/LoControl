@@ -13,3 +13,4 @@ Control your pc from web browser
 [🔴] Keyboard input <br>
 [🔴] Login system <br>
 [🔴] Clipboard sharing <br>
+[🔴] File sharing <br>
