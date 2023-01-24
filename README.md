@@ -6,8 +6,10 @@ Control your pc from web browser
 #
 
 
-### Future update :
- - Add login systeme
- - Add keyboard input
- - Add middle mouse button
- - Add Clipboard sharing
+### Currently :
+[🟢] Screen sharing <br>
+[🟢] Mouse input <br>
+[🔴] Middle mouse button <br>
+[🔴] Keyboard input <br>
+[🔴] Login system <br>
+[🔴] Clipboard sharing <br>
