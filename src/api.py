@@ -29,9 +29,7 @@ class User(UserMixin):
     def __str__(self):
         return f"User(id='{self.id}')"
 
-users = [
-    User("Loyerss", "1234")
-]
+users = []
 
 with open("Users.txt") as file:
     for line in file:
