@@ -14,3 +14,4 @@ Control your pc from web browser
 [🔴] Keyboard input <br>
 [🔴] Clipboard sharing <br>
 [🔴] Drag and drop file <br>
+[🔴] Song sharing <br>
