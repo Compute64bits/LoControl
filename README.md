@@ -9,8 +9,8 @@ Control your pc from web browser
 ### Currently :
 [🟢] Screen sharing <br>
 [🟢] Mouse input <br>
+[🟢] Login system <br>
 [🔴] Middle mouse button <br>
 [🔴] Keyboard input <br>
-[🔴] Login system <br>
 [🔴] Clipboard sharing <br>
-[🔴] File sharing <br>
+[🔴] Drag and drop file <br>
