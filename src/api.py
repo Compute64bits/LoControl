@@ -11,7 +11,7 @@ from secrets import token_hex
 DEBUG = True
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = token_hex(128)
+app.config['SECRET_KEY'] = token_hex(256)
 sock = Sock(app)
 login_manager = LoginManager()
 login_manager.login_view = '/login'
