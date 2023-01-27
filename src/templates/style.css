@@ -10,7 +10,8 @@ body, html{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #131922;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
+    /* #131922 */
 }
 
 img{

@@ -8,27 +8,31 @@
     var cursor_x = 0;
     var cursor_y = 0;
 
-    let sock = new WebSocket("ws://localhost:80/ws");
+    const URL = (window.location.href).split("//")[1].split("/")[0];
+
+    let sock = new WebSocket("ws://"+URL+"/ws");
 
     sock.onopen = function(e){
         sock.send("get");
-        document.title = "LoControl • Connecté!"
+        document.title = "LoControl • Connected!"
     };
 
     sock.onmessage = function(e){
         document.getElementById("screen").src = e.data;
         if(cursor_moved){
-             sock.send("cursor:"+cursor_x+":"+cursor_y);
-             cursor_moved = false;
+            if(cursor_x != Infinity && cursor_y != Infinity){
+                sock.send("cursor:"+cursor_x+":"+cursor_y);
+                cursor_moved = false;
+            }
         }
         setTimeout(function(){
             sock.send("get");
-        }, 20);
+        }, 10);
     };
 
     const error = function(e){
-        document.title = "LoControl • Déconnecté!";
-        alert("Websocket: Connection perdu! Appuyez sur F5");
+        document.title = "LoControl • Deconected!";
+        sock = new WebSocket("ws://"+URL+"/ws");
     }
 
     sock.onclose = error;
