@@ -7,6 +7,7 @@ from base64 import b64encode
 from win32api import SetCursorPos, mouse_event
 from win32con import MOUSEEVENTF_LEFTDOWN, MOUSEEVENTF_LEFTUP, MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP
 from secrets import token_hex
+from keyboard import press, release
 
 DEBUG = True
 
@@ -95,13 +96,11 @@ def logout():
 @sock.route('/ws')
 @login_required
 def handlemsg(ws):
-    print("logged!")
     cursor_x, cursor_y = 0, 0
     while True:
         text = str(ws.receive())
         if text == "get":
             ws.send(screenshot())
-            print("image send!")
         elif text == "rightdown":
             mouse_event(MOUSEEVENTF_RIGHTDOWN, cursor_x, cursor_y)
         elif text == "rightup":
@@ -111,9 +110,25 @@ def handlemsg(ws):
         elif text == "leftup":
             mouse_event(MOUSEEVENTF_LEFTUP, cursor_x, cursor_y)
         elif len(text.split("cursor:")) > 1:
-            cursor_x = int(text.split("cursor:")[1].split(":")[0])
-            cursor_y = int(text.split("cursor:")[1].split(":")[1])
-            SetCursorPos((cursor_x, cursor_y))
+            try:
+                cursor_x = int(text.split("cursor:")[1].split(":")[0])
+                cursor_y = int(text.split("cursor:")[1].split(":")[1])
+                SetCursorPos((cursor_x, cursor_y))
+            except:
+                return "Error: Invalid cursor position"
+        elif len(text.split("keypress:")) > 1:
+            try:
+                key = text.split("keypress:")[1]
+                press(key)
+            except:
+                return "Error: Invalid key"
+        elif len(text.split("keyrelease:")) > 1:
+            try:
+                key = text.split("keyrelease:")[1]
+                release(key)
+            except:
+                return "Error: Invalid key"
+
 
 if __name__ == "__main__":
     app.run("0.0.0.0", 80,DEBUG, threaded=True)
