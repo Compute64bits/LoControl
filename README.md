@@ -18,6 +18,7 @@ Control **your** pc from any web browser <br>
 [🔴] Clipboard sharing <br>
 [🔴] Drag and drop file <br>
 [🔴] Song sharing <br>
+[🔴] Gamepad input <br>
 
 #
 
