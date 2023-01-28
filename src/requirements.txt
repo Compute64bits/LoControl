@@ -2,3 +2,4 @@ flask
 flask_sock
 pillow
 pywin32
+keyboard
