@@ -1,5 +1,6 @@
 # LoControl [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-Control your pc from web browser
+Control **your** pc from any web browser <br>
+*(I am not responsible for what you do with the software)*
 
 /!\ The project is not finished and is in development!
 
