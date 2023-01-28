@@ -20,7 +20,7 @@
     sock.onmessage = function(e){
         document.getElementById("screen").src = e.data;
         if(cursor_moved){
-            if(cursor_x != Infinity && cursor_y != Infinity){
+            if(cursor_x != -Infinity && cursor_y != -Infinity){
                 sock.send("cursor:"+cursor_x+":"+cursor_y);
                 cursor_moved = false;
             }
@@ -68,5 +68,13 @@
             }
         };
     };
+
+    onkeydown = function(e){
+        sock.send("keypress:"+e["key"]);
+    }
+
+    onkeyup = function(e){
+        sock.send("keyrelease:"+e["key"]);
+    }
 
 }());
