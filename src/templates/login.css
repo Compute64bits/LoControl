@@ -25,6 +25,13 @@ body{
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
 }
 
+@media all and (max-width: 400px){
+  .center{
+    width: 100vw;
+    border-radius: 0;
+  }
+}
+
 .center h1{
   text-align: center;
   padding: 20px 0;
