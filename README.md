@@ -12,9 +12,9 @@ Control **your** pc from any web browser <br>
 ### Currently :
 [🟢] Screen sharing <br>
 [🟢] Mouse input <br>
+[🟢] Keyboard input <br>
 [🟢] Login system <br>
 [🔴] Middle mouse button <br>
-[🔴] Keyboard input <br>
 [🔴] Clipboard sharing <br>
 [🔴] Drag and drop file <br>
 [🔴] Song sharing <br>
