@@ -5,7 +5,9 @@ from PIL import ImageGrab, Image
 from io import BytesIO
 from base64 import b64encode
 from win32api import SetCursorPos, mouse_event
-from win32con import MOUSEEVENTF_LEFTDOWN, MOUSEEVENTF_LEFTUP, MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP
+from win32con import MOUSEEVENTF_LEFTDOWN, MOUSEEVENTF_LEFTUP, MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP, SRCCOPY
+from win32gui import GetDesktopWindow, GetWindowRect, GetWindowDC
+from win32ui import CreateDCFromHandle, CreateBitmap
 from secrets import token_hex
 from keyboard import press, release
 
@@ -64,12 +66,11 @@ def e404(_):
     return "404"
 
 def screenshot():
-    img = ImageGrab.grab(bbox=None, include_layered_windows=True)
     buff = BytesIO()
-    img = img.resize((1792, 1008), Image.Resampling.LANCZOS) # 1280; 720 if is laggy
-    img.save(buff, format="WEBP", optimize=True, quality=60)
+    img = ImageGrab.grab(bbox=None, include_layered_windows=True)
+    img.save(buff, format="WEBP", optimize=False, quality=60)
     b64 = b64encode(buff.getvalue())
-    return "data:image/png;base64," + b64.decode("utf-8")
+    return "data:image/webp;base64," + b64.decode("utf-8")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -93,15 +94,13 @@ def logout():
     logout_user()
     return redirect(redirect("/login"))
 
-@sock.route('/ws')
+@sock.route('/controllers')
 @login_required
-def handlemsg(ws):
+def controllers(ws):
     cursor_x, cursor_y = 0, 0
     while True:
         text = str(ws.receive())
-        if text == "get":
-            ws.send(screenshot())
-        elif text == "rightdown":
+        if text == "rightdown":
             mouse_event(MOUSEEVENTF_RIGHTDOWN, cursor_x, cursor_y)
         elif text == "rightup":
             mouse_event(MOUSEEVENTF_RIGHTUP, cursor_x, cursor_y)
@@ -129,6 +128,17 @@ def handlemsg(ws):
             except:
                 return "Error: Invalid key"
 
+@sock.route('/screen_1')
+@login_required
+def screen_1(ws):
+    while True:
+        ws.send(screenshot())
+
+@sock.route('/screen_2')
+@login_required
+def screen_2(ws):
+    while True:
+        ws.send(screenshot())
 
 if __name__ == "__main__":
-    app.run("0.0.0.0", 80,DEBUG, threaded=True)
+    app.run("0.0.0.0", 80, DEBUG, threaded=True)

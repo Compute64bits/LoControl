@@ -1,4 +1,5 @@
 flask
+flask_login
 flask_sock
 pillow
 pywin32
