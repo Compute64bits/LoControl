@@ -9,16 +9,12 @@ Control **your** pc from any web browser <br>
 #
 
 
-### Currently :
-[🟢] Screen sharing <br>
-[🟢] Mouse input <br>
-[🟢] Keyboard input <br>
-[🟢] Login system <br>
-[🔴] Middle mouse button <br>
-[🔴] Clipboard sharing <br>
-[🔴] Drag and drop file <br>
-[🔴] Song sharing <br>
-[🔴] Gamepad input <br>
+### Currently : *v0.3.5-alpha*
+🖥️ Screen sharing <br>
+🖱️ Left and Right mouse click <br> 
+⌨️ Keyboard input <br>
+🔐 Login systeme <br>
+🚀 Fps upgrade  *(on my pc... before: 6fps, actually: 12fps)* <br>
 
 #
 
