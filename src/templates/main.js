@@ -21,10 +21,8 @@ screen_1.onopen = function (_) {
 screen_1.onmessage = function (e) {
     document.getElementById("screen").src = e.data;
     if (cursor_moved) {
-        if (cursor_x != -Infinity && cursor_y != -Infinity) {
-            the_controllers.send("cursor:" + cursor_x + ":" + cursor_y);
-            cursor_moved = false;
-        }
+        the_controllers.send("cursor:" + cursor_x + ":" + cursor_y);
+        cursor_moved = false;
     }
     screen_2.send(".");
 };
