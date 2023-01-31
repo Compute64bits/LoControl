@@ -9,17 +9,6 @@ var cursor_y = 0;
 
 const URL = window.location.href.split("//")[1].split("/")[0];
 
-let fps = 0;
-
-(function loop_fps(){
-    setTimeout(function(){
-        document.getElementById("fps_show").innerText = fps;
-        fps = 0;
-        loop_fps();
-    }, 1000);
-}());
-
-
 let the_controllers = new WebSocket("ws://" + URL + "/controllers");
 let screen_1 = new WebSocket("ws://" + URL + "/screen_1");
 let screen_2 = new WebSocket("ws://" + URL + "/screen_2");
@@ -31,7 +20,6 @@ screen_1.onopen = function (_) {
 
 screen_1.onmessage = function (e) {
     document.getElementById("screen").src = e.data;
-    fps += 1;
     if (cursor_moved) {
         if (cursor_x != -Infinity && cursor_y != -Infinity) {
             the_controllers.send("cursor:" + cursor_x + ":" + cursor_y);
@@ -43,7 +31,6 @@ screen_1.onmessage = function (e) {
 
 screen_2.onmessage = function (e) {
     document.getElementById("screen").src = e.data;
-    fps += 1;
     screen_1.send(".");
 };
 
