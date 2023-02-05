@@ -2,9 +2,9 @@
 Control **your** pc from any web browser <br>
 *educational purpose only, I am not responsible for any of your action with this software*
 
-/!\ The project is not finished and is in development!
+## This project is close because python is sooooo slow 💀
 
-### Edit the Users.txt file before using the application
+#### Edit the Users.txt file before using the application
 
 #
 
